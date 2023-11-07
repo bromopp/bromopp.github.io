@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script src="
+	https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
+	"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Merriweather:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<link href="./_app/immutable/assets/0.e5100e99.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.a8305fc3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.c358b412.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.6c9893ac.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.01a6ace5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.1673c172.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.af5a2f99.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.ca854eec.js">
+  </head>
+  <body
+    data-sveltekit-preload-data="hover"
+    class="bg-slate-950 text-white relative"
+  >
+    <div style="display: contents" class="relative z-[1]">  <div class="relative flex flex-col max-w-[1400px] mx-auto w-full text-sm sm:text-base min-h-screen"><div class="fixed bottom-0 w-full duration-200 flex p-5 z-[10]opacity-0 pointer-events-none"><button class="ml-auto rounded-full bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer" data-svelte-h="svelte-ms0r7"><i class="fa-solid fa-arrow-up grid place-items-center aspect-square"></i></button></div> <header class="sticky z-[10] top-0 duration-200 px-6 flex items-center justify-between border border-solidpy-6 bg-transparent border-transparent"><h1 class="font-medium" data-svelte-h="svelte-fijn2d"><b class="font-bold merriweather">Bruno</b> Oppizzi</h1> <div class="sm:flex items-center gap-4 hidden"><a href="" class="duration-200 hover:text-violet-700"><p>Projects</p> </a><a href="" class="duration-200 hover:text-violet-700"><p>About me</p> </a></div> <a href="https://bromopp.github.io/" target="_blank" class="blueShadow relative overflow-hidden px-5 py-2 group rounded-full bg-white text-slate-950" data-svelte-h="svelte-1pxfd7t"><div class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"></div> <h4 class="relative z-9 py-2">Get in touch</h4></a></header> <main class="flex flex-col flex-1 p-4" data-svelte-h="svelte-1j7c3l1"><section id="introPage" class="grid grid-cols-1 lg:grid-cols-2 gap 10 py-8 sm:py-14"><div class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"><h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">Hi! I&#39;m <span class="text-violet-400">Bruno </span>Oppizzi <br> Web &amp; Game <span class="text-violet-400">Developer</span></h2> <p class="text-base sm:text-lg md:text-xl"></p></div></section></main> </div>  
+			
+			<script>
+				{
+					__sveltekit_1sw8b2u = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.a8305fc3.js"),
+						import("./_app/immutable/entry/app.01a6ace5.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+    <div class="absolute min-h-screen top-0 left-0 w-full z-[-1] opacity-70">
+      <div class="absolute inset-0" id="particles-js"></div>
+    </div>
+    <script>
+      particlesJS.load("particles-js", "assets/particles.json", function () {
+        console.log("particles loaded");
+      });
+    </script>
+  </body>
+</html>
