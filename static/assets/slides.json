@@ -1,0 +1,27 @@
+[
+    {
+        "thumbnail": "/src/img/JesWritesThumbnail.png",
+        "title": "Slide 1",
+        "description": "Brief description of slide 1"
+    },
+    {
+        "thumbnail": "/src/img/JesWritesThumbnail.png",
+        "title": "Slide 2",
+        "description": "Brief description of slide 2"
+    },
+    {
+        "thumbnail": "/src/img/JesWritesThumbnail.png",
+        "title": "Slide 3",
+        "description": "Brief description of slide 3"
+    },
+    {
+        "thumbnail": "/src/img/JesWritesThumbnail.png",
+        "title": "Slide 4",
+        "description": "Brief description of slide 4"
+    },
+    {
+        "thumbnail": "/src/img/JesWritesThumbnail.png",
+        "title": "Slide 5",
+        "description": "Brief description of slide 5"
+    }
+]

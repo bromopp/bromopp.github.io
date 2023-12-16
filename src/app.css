@@ -13,3 +13,48 @@ html {
 .merriweather {
     font-family: 'Merriweather', serif;
 }
+
+.card-container {
+    width: 400px;
+    height: 480px;
+    margin-top: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #ffffff;
+    border-width: 0.5rem;
+    border-style: solid;
+    overflow: hidden;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Adjust based on your requirements */
+    text-align: center;
+    gap: 1.5rem; /* Adjust the gap as needed */
+  }
+  
+  /* Title styles */
+  .title {
+    font-weight: 600;
+    font-size: 2.25rem; /* Adjust the font size as needed */
+    line-height: 1.4;
+    color: #333; /* Adjust the color as needed */
+  }
+  
+  /* Name styles */
+  .name {
+    color: #8a4baf; /* Adjust the color as needed */
+  }
+  
+  /* Role styles */
+  .role {
+    color: #8a4baf; /* Adjust the color as needed */
+  }
+  
+  /* Description styles */
+  .description {
+    font-size: 1rem; /* Adjust the font size as needed */
+    /* Additional styling for the description */
+  }
+  
