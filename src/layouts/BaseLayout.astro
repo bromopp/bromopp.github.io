@@ -1,0 +1,21 @@
+---
+import FloatingNav from "../components/FloatingNav.astro";
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap" rel="stylesheet">
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bruno Oppizzi | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap" rel="stylesheet" />
+  </head>
+  <body class="relative">
+    <FloatingNav />
+    <main class="max-w-container mx-auto px-4 py-8 space-y-20">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+---
+const navItems = [
+  { href: "#profile", label: "Profile", icon: "■" }, // Simple square, replace with SVG/pixel icon if desired
+  { href: "#about", label: "About", icon: "▲" },
+  { href: "#projects", label: "Projects", icon: "●" },
+  { href: "#contact", label: "Contact", icon: "▼" },
+];
+---
+<nav class="fixed top-1/2 right-0 transform -translate-y-1/2 z-50 bg-soft-gray-light/80 backdrop-blur-sm border-l-2 border-t-2 border-b-2 border-science-yellow p-2 hidden md:block">
+  <ul class="space-y-3">
+    {navItems.map(item => (
+      <li>
+        <a
+          href={item.href}
+          aria-label={item.label}
+          title={item.label}
+          class="block text-center text-science-yellow hover:text-white focus:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-science-yellow p-2 transition-colors duration-200 text-xl"
+        >
+          <span class="font-heading" aria-hidden="true">{item.icon}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-soft-gray-light/90 backdrop-blur-sm border-b-2 border-science-yellow p-2 md:hidden">
+  <ul class="flex justify-around space-x-1">
+    {navItems.map(item => (
+      <li>
+        <a
+          href={item.href}
+          aria-label={item.label}
+          title={item.label}
+          class="block text-center text-science-yellow hover:text-white focus:text-white focus:outline-none focus-visible:ring-1 focus-visible:ring-science-yellow p-1 text-lg"
+        >
+          <span class="font-heading" aria-hidden="true">{item.icon}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  /* For pixel art icons, you might use <img> or inline SVGs instead of text characters */
+  /* Example: using a simple pixel-art-like square */
+  /* nav a span::before { content: ''; display: inline-block; width: 1em; height: 1em; background: currentColor; margin-right: 0.5em; } */
+</style>

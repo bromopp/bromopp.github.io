@@ -1,0 +1,59 @@
+---
+// import { Image } from 'astro:assets'; // For optimized images
+
+interface Props {
+  title: string;
+  description: string;
+  tech: string[];
+  imageUrl?: string;
+  liveUrl?: string;
+  repoUrl?: string;
+}
+
+const { title, description, tech, imageUrl, liveUrl, repoUrl } = Astro.props;
+---
+<div class="bg-soft-gray-light border-2 border-science-yellow/70 p-5 flex flex-col h-full transition-all duration-300 hover:border-science-yellow hover:shadow-glow-yellow">
+  {imageUrl && (
+    <div class="mb-4 aspect-video bg-soft-gray-dark border border-science-yellow/30">
+      {/* Replace with Astro Image component for optimization */}
+      <img src={imageUrl} alt={`${title} screenshot`} loading="lazy" class="w-full h-full object-cover" />
+      {/* <Image src={...} alt={...} class="w-full h-full object-cover" widths={[200, 400, 800]} sizes="(max-width: 768px) 100vw, 50vw" format="webp"/> */}
+    </div>
+  )}
+  <h3 class="font-heading text-xl text-science-yellow mb-2">{title}</h3>
+  <p class="text-gray-300 text-sm leading-relaxed mb-4 flex-grow">{description}</p>
+  <div class="mb-4">
+    <p class="font-body text-xs text-science-yellow/80 mb-1">TECH_STACK:</p>
+    <ul class="flex flex-wrap gap-2">
+      {tech.map(t => (
+        <li class="text-xs bg-science-yellow/20 text-science-yellow px-2 py-0.5">{t}</li>
+      ))}
+    </ul>
+  </div>
+  <div class="mt-auto flex space-x-3 pt-2 border-t border-science-yellow/30">
+    {liveUrl && (
+      <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="text-science-yellow hover:text-white font-body text-sm py-1 px-2 border border-science-yellow hover:bg-science-yellow hover:text-soft-gray-dark transition-colors">
+        LIVE_DEMO &gt;
+      </a>
+    )}
+    {repoUrl && (
+      <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="text-science-yellow hover:text-white font-body text-sm py-1 px-2 border border-science-yellow hover:bg-science-yellow hover:text-soft-gray-dark transition-colors">
+        SOURCE_CODE &gt;
+      </a>
+    )}
+  </div>
+</div>
+<style>
+  /* Simple pixelated border effect (optional) */
+  /*
+  .project-card {
+    border-style: solid;
+    border-width: 2px;
+    border-image-slice: 2;
+    border-image-width: 2;
+    border-image-repeat: stretch;
+    border-image-source: url('data:image/svg+xml;utf8,<svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H2V2H0V0ZM4 0H6V2H4V0ZM0 4H2V6H0V4ZM4 4H6V6H4V4Z" fill="%23FFC832" /></svg>');
+    border-image-outset: 0;
+  }
+  */
+</style>

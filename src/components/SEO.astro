@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  siteName: string;
+  permalink?: string; // Full URL for canonical
+  ogImage?: string; // URL to an Open Graph image
+}
+
+const { title, description, siteName, permalink, ogImage = '/og-default.png' } = Astro.props;
+const canonicalUrl = permalink || new URL(Astro.url.pathname, Astro.site).href;
+---
+<title>{title} | {siteName}</title>
+<meta name="description" content={description} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={`${title} | ${siteName}`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalUrl} />
+<meta property="twitter:title" content={`${title} | ${siteName}`} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(ogImage, Astro.site).href} />
+
+<link rel="canonical" href={canonicalUrl} />

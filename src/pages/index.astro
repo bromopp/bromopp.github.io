@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileSection from '../components/ProfileSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+const pageTitle = "Home";
+const pageDescription = "Personal portfolio of Bromopp, showcasing projects and skills in web and game development.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="space-y-24 md:space-y-32">
+    <ProfileSection />
+    <hr class="border-t-2 border-science-yellow border-dashed my-12" />
+    <AboutSection />
+    <hr class="border-t-2 border-science-yellow border-dashed my-12" />
+    <ProjectsSection />
+    <hr class="border-t-2 border-science-yellow border-dashed my-12" />
+    <ContactSection />
+  </div>
+</BaseLayout>

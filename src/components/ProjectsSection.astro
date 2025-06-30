@@ -1,0 +1,40 @@
+---
+import ProjectCard from './ProjectCard.astro';
+// Example project data. Consider using content collections for more projects.
+const projects = [
+  {
+    title: "Pixel Invaders",
+    description: "A retro space shooter game built with [Engine/Framework]. Features classic arcade mechanics and pixel art.",
+    tech: ["JavaScript", "PhaserJS", "Aseprite"],
+    imageUrl: "/images/project-pixel-invaders.png", // Placeholder
+    liveUrl: "#", // Link to live demo
+    repoUrl: "#" // Link to GitHub repo
+  },
+  {
+    title: "Chrono Terminal",
+    description: "An interactive web-based terminal interface for [Purpose]. Styled with a retro CRT effect.",
+    tech: ["Astro", "TailwindCSS", "TypeScript"],
+    imageUrl: "/images/project-chrono-terminal.png", // Placeholder
+    liveUrl: "#",
+    repoUrl: "#"
+  },
+  {
+    title: "Synthwave Dashboard",
+    description: "Data visualization dashboard with a synthwave aesthetic. Displays [Data Type] in real-time.",
+    tech: ["React", "D3.js", "Node.js"],
+    imageUrl: "/images/project-synth-dashboard.png", // Placeholder
+    repoUrl: "#"
+  }
+];
+// Make sure to add placeholder images to public/images/
+---
+<section id="projects" class="py-16">
+  <h2 class="font-heading text-3xl sm:text-4xl text-science-yellow mb-12 text-center">
+    // PROJECT_ARCHIVES
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map(project => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</section>

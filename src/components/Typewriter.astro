@@ -1,0 +1,30 @@
+
+---
+const { text, speed = 35, cursor = true } = Astro.props;
+const safeText = JSON.stringify(text)
+---
+<div class="relative font-retro text-gray-200 text-lg leading-relaxed">
+  <p id="typewriter" class="whitespace-pre-wrap"></p>
+  {cursor && <span id="cursor" class="absolute text-scienceYellow animate-blink">|</span>}
+<script is:inline>
+  const text = {safeText};
+  const speed = {speed};
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("typewriter");
+    const cursor = document.getElementById("cursor");
+
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else {
+        cursor?.remove();
+      }
+    }
+    type();
+  });
+</script>
+</div>
