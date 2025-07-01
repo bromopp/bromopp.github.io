@@ -2,29 +2,151 @@
   <h2 class="font-heading text-3xl sm:text-4xl text-science-yellow mb-12 text-center">
     // ESTABLISH_CONTACT
   </h2>
-  <form
-    action="https://api.web3forms.com/submit" method="POST"
-    class="max-w-lg mx-auto space-y-6 bg-soft-gray-light p-6 md:p-8 border-2 border-science-yellow/50 shadow-lg"
-  >
-    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE"> <input type="hidden" name="subject" value="New Contact from Portfolio Site">
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+  
+  <div class="max-w-lg mx-auto">
+    <form
+      action="https://api.web3forms.com/submit" 
+      method="POST"
+      class="space-y-6 bg-soft-gray-light p-6 md:p-8 border-2 border-science-yellow/50 shadow-glow-yellow-subtle"
+      id="contact-form"
+    >
+      <!-- Web3Forms Configuration -->
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+      <input type="hidden" name="subject" value="New Contact from Portfolio Site">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+      
+      <!-- Success/Error Messages -->
+      <div id="form-messages" class="hidden">
+        <div id="success-message" class="hidden p-4 bg-green-900/50 border border-green-500 text-green-300 text-sm">
+          ✓ MESSAGE_TRANSMITTED_SUCCESSFULLY
+        </div>
+        <div id="error-message" class="hidden p-4 bg-red-900/50 border border-red-500 text-red-300 text-sm">
+          ✗ TRANSMISSION_FAILED // Please try again
+        </div>
+      </div>
 
-    <div>
-      <label for="name" class="block text-sm font-body text-science-yellow mb-1">NAME:</label>
-      <input type="text" name="name" id="name" required class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 focus:outline-none focus:ring-2 focus:ring-science-yellow focus:ring-opacity-75 shadow-glow-yellow" />
-    </div>
-    <div>
-      <label for="email" class="block text-sm font-body text-science-yellow mb-1">EMAIL_ADDRESS:</label>
-      <input type="email" name="email" id="email" required class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 focus:outline-none focus:ring-2 focus:ring-science-yellow focus:ring-opacity-75 shadow-glow-yellow" />
-    </div>
-    <div>
-      <label for="message" class="block text-sm font-body text-science-yellow mb-1">MESSAGE_PAYLOAD:</label>
-      <textarea name="message" id="message" rows="5" required class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 focus:outline-none focus:ring-2 focus:ring-science-yellow focus:ring-opacity-75 shadow-glow-yellow"></textarea>
-    </div>
-    <div>
-      <button type="submit" class="w-full px-8 py-3 bg-science-yellow text-soft-gray-dark font-heading text-lg hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-soft-gray-light transition-colors">
-        TRANSMIT &gt;
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-body text-science-yellow mb-2 uppercase tracking-wide">
+            &gt; NAME_INPUT:
+          </label>
+          <input 
+            type="text" 
+            name="name" 
+            id="name" 
+            required 
+            class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 font-retro focus:outline-none focus:ring-2 focus:ring-science-yellow/30 transition-all duration-200 placeholder:text-gray-500"
+            placeholder="Enter designation..."
+          />
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-body text-science-yellow mb-2 uppercase tracking-wide">
+            &gt; EMAIL_PROTOCOL:
+          </label>
+          <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            required 
+            class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 font-retro focus:outline-none focus:ring-2 focus:ring-science-yellow/30 transition-all duration-200 placeholder:text-gray-500"
+            placeholder="user@domain.ext"
+          />
+        </div>
+        
+        <div>
+          <label for="message" class="block text-sm font-body text-science-yellow mb-2 uppercase tracking-wide">
+            &gt; MESSAGE_PAYLOAD:
+          </label>
+          <textarea 
+            name="message" 
+            id="message" 
+            rows="5" 
+            required 
+            class="w-full bg-soft-gray-dark border-2 border-science-yellow/50 focus:border-science-yellow text-white p-3 font-retro focus:outline-none focus:ring-2 focus:ring-science-yellow/30 transition-all duration-200 placeholder:text-gray-500 resize-none"
+            placeholder="Compose your transmission..."
+          ></textarea>
+        </div>
+      </div>
+      
+      <button 
+        type="submit" 
+        class="w-full px-8 py-4 bg-science-yellow text-soft-gray-dark font-heading text-sm hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-soft-gray-light transition-all duration-200 hover:shadow-glow-yellow disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide"
+        id="submit-btn"
+      >
+        <span id="submit-text">TRANSMIT_DATA &gt;&gt;</span>
+        <span id="submit-loading" class="hidden">TRANSMITTING...</span>
       </button>
+    </form>
+    
+    <!-- Alternative Contact Methods -->
+    <div class="mt-8 text-center">
+      <p class="text-science-yellow/70 text-sm font-body mb-4">// ALTERNATIVE_CHANNELS:</p>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:your.email@domain.com" class="text-science-yellow hover:text-white transition-colors font-retro text-sm">
+          EMAIL_DIRECT
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-science-yellow hover:text-white transition-colors font-retro text-sm">
+          GITHUB_REPO
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-science-yellow hover:text-white transition-colors font-retro text-sm">
+          LINKEDIN_NET
+        </a>
+      </div>
     </div>
-  </form>
+  </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitLoading = document.getElementById('submit-loading');
+    const messagesDiv = document.getElementById('form-messages');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        submitLoading.classList.remove('hidden');
+        
+        // Hide previous messages
+        messagesDiv.classList.add('hidden');
+        successMessage.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+        
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+          });
+          
+          if (response.ok) {
+            // Success
+            messagesDiv.classList.remove('hidden');
+            successMessage.classList.remove('hidden');
+            form.reset();
+          } else {
+            throw new Error('Network response was not ok');
+          }
+        } catch (error) {
+          // Error
+          messagesDiv.classList.remove('hidden');
+          errorMessage.classList.remove('hidden');
+        } finally {
+          // Reset button state
+          submitBtn.disabled = false;
+          submitText.classList.remove('hidden');
+          submitLoading.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>

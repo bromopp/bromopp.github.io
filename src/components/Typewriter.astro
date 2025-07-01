@@ -1,30 +1,70 @@
-
 ---
-const { text, speed = 35, cursor = true } = Astro.props;
-const safeText = JSON.stringify(text)
+interface Props {
+  text: string;
+  speed?: number;
+  cursor?: boolean;
+  delay?: number;
+}
+
+const { text, speed = 35, cursor = true, delay = 0 } = Astro.props;
+const uniqueId = `typewriter-${Math.random().toString(36).substr(2, 9)}`;
 ---
-<div class="relative font-retro text-gray-200 text-lg leading-relaxed">
-  <p id="typewriter" class="whitespace-pre-wrap"></p>
-  {cursor && <span id="cursor" class="absolute text-scienceYellow animate-blink">|</span>}
-<script is:inline>
-  const text = {safeText};
-  const speed = {speed};
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const el = document.getElementById("typewriter");
-    const cursor = document.getElementById("cursor");
+<div class="relative font-retro text-gray-200 text-base leading-relaxed">
+  <p id={uniqueId} class="whitespace-pre-wrap min-h-[1.5em]"></p>
+  {cursor && (
+    <span 
+      id={`${uniqueId}-cursor`} 
+      class="inline-block w-2 h-5 bg-science-yellow ml-1 animate-blink"
+    ></span>
+  )}
+</div>
 
+<script define:vars={{ text, speed, delay, uniqueId, cursor }}>
+  function initTypewriter() {
+    const element = document.getElementById(uniqueId);
+    const cursorElement = document.getElementById(`${uniqueId}-cursor`);
+    
+    if (!element) return;
+    
     let i = 0;
+    let isComplete = false;
+    
     function type() {
-      if (i < text.length) {
-        el.textContent += text.charAt(i);
+      if (i < text.length && !isComplete) {
+        element.textContent += text.charAt(i);
         i++;
-        setTimeout(type, speed);
+        setTimeout(type, speed + Math.random() * 20); // Add slight randomness
       } else {
-        cursor?.remove();
+        isComplete = true;
+        // Remove cursor after completion if specified
+        if (cursor && cursorElement) {
+          setTimeout(() => {
+            cursorElement.style.display = 'none';
+          }, 2000);
+        }
       }
     }
-    type();
-  });
+    
+    // Start typing after delay
+    setTimeout(type, delay);
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTypewriter);
+  } else {
+    initTypewriter();
+  }
 </script>
-</div>
+
+<style>
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+</style>

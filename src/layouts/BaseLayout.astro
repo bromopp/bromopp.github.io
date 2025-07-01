@@ -1,21 +1,54 @@
 ---
-import FloatingNav from "../components/FloatingNav.astro";
+import SEO from '../components/SEO.astro';
+import FloatingNav from '../components/FloatingNav.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteName = "Bromopp Portfolio";
 ---
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap" rel="stylesheet">
-
+<!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <title>Bruno Oppizzi | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/styles/global.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap" rel="stylesheet" />
+    
+    <SEO 
+      title={title}
+      description={description}
+      siteName={siteName}
+      permalink={Astro.url.href}
+    />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Theme -->
+    <meta name="theme-color" content="#FFC832" />
   </head>
-  <body class="relative">
+  <body class="bg-background text-lightText font-retro antialiased">
     <FloatingNav />
-    <main class="max-w-container mx-auto px-4 py-8 space-y-20">
-      <slot />
-    </main>
+    
+    <!-- Mobile nav padding -->
+    <div class="pt-16 md:pt-0">
+      <main class="max-w-container mx-auto px-4 py-8 space-y-20">
+        <slot />
+      </main>
+    </div>
+    
+    <!-- Add some ambient effects -->
+    <div class="fixed inset-0 pointer-events-none">
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-science-yellow to-transparent opacity-30"></div>
+      <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-science-yellow to-transparent opacity-30"></div>
+    </div>
   </body>
 </html>
