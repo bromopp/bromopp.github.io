@@ -1,40 +1,50 @@
 ---
 import ProjectCard from './ProjectCard.astro';
-// Example project data. Consider using content collections for more projects.
+import { projectImages } from '../assets/projects/index.ts';
+
+// Your actual projects
 const projects = [
   {
-    title: "Pixel Invaders",
-    description: "A retro space shooter game built with [Engine/Framework]. Features classic arcade mechanics and pixel art.",
-    tech: ["JavaScript", "PhaserJS", "Aseprite"],
-    imageUrl: "/images/project-pixel-invaders.png", // Placeholder
-    liveUrl: "#", // Link to live demo
-    repoUrl: "#" // Link to GitHub repo
+    title: "PongPDS",
+    description: "A Lua remake of the classic Pong game with enhanced gameplay mechanics using the LÖVE2D engine. Features three unique skills for each player: freeze projectile, dash, and shield abilities that add strategic depth and dynamic gameplay to the traditional formula.",
+    tech: ["Lua", "LÖVE2D", "Game Development", "Physics"],
+    imageUrl: projectImages.pongpds,
+    imageAlt: "PongPDS game screenshot showing enhanced Pong gameplay with special abilities",
+    repoUrl: "https://github.com/bromopp/PongPDS",
+    featured: true
   },
-  {
-    title: "Chrono Terminal",
-    description: "An interactive web-based terminal interface for [Purpose]. Styled with a retro CRT effect.",
-    tech: ["Astro", "TailwindCSS", "TypeScript"],
-    imageUrl: "/images/project-chrono-terminal.png", // Placeholder
-    liveUrl: "#",
-    repoUrl: "#"
-  },
-  {
-    title: "Synthwave Dashboard",
-    description: "Data visualization dashboard with a synthwave aesthetic. Displays [Data Type] in real-time.",
-    tech: ["React", "D3.js", "Node.js"],
-    imageUrl: "/images/project-synth-dashboard.png", // Placeholder
-    repoUrl: "#"
-  }
+  // Add more of your projects here as you build them
 ];
-// Make sure to add placeholder images to public/images/
 ---
+
 <section id="projects" class="py-16">
   <h2 class="font-heading text-3xl sm:text-4xl text-science-yellow mb-12 text-center">
     // PROJECT_ARCHIVES
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {projects.map(project => (
-      <ProjectCard {...project} />
-    ))}
+  
+  {projects.length === 1 ? (
+    <!-- Single project layout - centered and larger -->
+    <div class="max-w-2xl mx-auto">
+      <ProjectCard {...projects[0]} />
+    </div>
+  ) : (
+    <!-- Multiple projects layout - responsive grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  )}
+  
+  {/* Add a note about more projects coming */}
+  <div class="mt-16 text-center">
+    <div class="inline-block bg-soft-gray-light border border-science-yellow/30 px-6 py-4">
+      <p class="font-body text-science-yellow/70 text-sm">
+        // MORE_PROJECTS_IN_DEVELOPMENT
+      </p>
+      <p class="font-retro text-xs text-gray-400 mt-2">
+        Stay tuned for upcoming web and game development projects
+      </p>
+    </div>
   </div>
 </section>

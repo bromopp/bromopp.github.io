@@ -1,15 +1,27 @@
 ---
+import OptimizedImage from './OptimizedImage.astro';
+
 interface Props {
   title: string;
   description: string;
   tech: string[];
-  imageUrl?: string;
+  imageUrl?: string | ImageMetadata;
+  imageAlt?: string;
   liveUrl?: string;
   repoUrl?: string;
   featured?: boolean;
 }
 
-const { title, description, tech, imageUrl, liveUrl, repoUrl, featured = false } = Astro.props;
+const { 
+  title, 
+  description, 
+  tech, 
+  imageUrl, 
+  imageAlt,
+  liveUrl, 
+  repoUrl, 
+  featured = false 
+} = Astro.props;
 ---
 
 <article class={`group bg-soft-gray-light border-2 ${featured ? 'border-science-yellow' : 'border-science-yellow/50'} p-6 flex flex-col h-full transition-all duration-300 hover:border-science-yellow hover:shadow-glow-yellow relative overflow-hidden`}>
@@ -23,18 +35,31 @@ const { title, description, tech, imageUrl, liveUrl, repoUrl, featured = false }
   <!-- Project image -->
   {imageUrl ? (
     <div class="mb-6 aspect-video bg-soft-gray-dark border border-science-yellow/30 overflow-hidden relative group-hover:border-science-yellow/70 transition-colors">
-      <img 
-        src={imageUrl} 
-        alt={`${title} screenshot`} 
-        loading="lazy" 
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+      <OptimizedImage
+        src={imageUrl}
+        alt={imageAlt || `${title} project screenshot`}
+        width={600}
+        height={338}
+        quality={85}
+        format="webp"
+        loading="lazy"
+        densities={[1, 2]}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
       <div class="absolute inset-0 bg-science-yellow/0 group-hover:bg-science-yellow/10 transition-colors duration-300"></div>
+      
+      <!-- Image overlay effects -->
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div class="absolute top-2 right-2 text-science-yellow/70 font-heading text-xs">
+          // VIEW_PROJECT
+        </div>
+      </div>
     </div>
   ) : (
     <div class="mb-6 aspect-video bg-soft-gray-dark border border-science-yellow/30 flex items-center justify-center">
-      <div class="text-science-yellow/50 font-heading text-xs">
-        // IMAGE_LOADING
+      <div class="text-science-yellow/50 font-heading text-xs text-center">
+        <div class="mb-2">// NO_IMAGE_DATA</div>
+        <div class="text-xs opacity-60">Add project screenshot</div>
       </div>
     </div>
   )}
@@ -52,7 +77,7 @@ const { title, description, tech, imageUrl, liveUrl, repoUrl, featured = false }
   <!-- Tech stack -->
   <div class="mb-6">
     <p class="font-body text-xs text-science-yellow/80 mb-3 uppercase tracking-wide">
-      &gt; TECH_STACK:
+      &gt; TECH_TAGS:
     </p>
     <div class="flex flex-wrap gap-2">
       {tech.map(t => (
